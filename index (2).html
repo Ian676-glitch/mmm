@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mother Mary International School Complex Voting</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        header {
+            background-color: #0047AB;
+            color: white;
+            padding: 20px;
+        }
+
+        header img {
+            width: 100px;
+            height: auto;
+        }
+
+        .form-container {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            max-width: 400px;
+            margin: 20px auto;
+        }
+
+        .form-container input, .form-container button {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        .candidate-container {
+            margin: 20px auto;
+            max-width: 600px;
+        }
+
+        .candidate {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+
+        .candidate img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        .done-btn {
+            background-color: #0047AB;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .done-btn:disabled {
+            background-color: grey;
+            cursor: not-allowed;
+        }
+
+        .dot {
+            height: 20px;
+            width: 20px;
+            background-color: black;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .results {
+            margin-top: 20px;
+        }
+
+        .results div {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://assets.onecompiler.app/42wnqhaeu/42xqpmx3c/MMISC%20Logo.png" alt="MMISC Logo">
+        <h1>Prefectorial Voting</h1>
+    </header>
+    <div class="form-container">
+        <h2>Enter Your Details</h2>
+        <input type="text" id="name" placeholder="Your Name">
+        <input type="text" id="class" placeholder="Your Class">
+        <button onclick="showCandidates()">See the Candidates</button>
+    </div>
+    <div id="candidates-section" style="display:none;">
+        <h2>Vote for Your Candidates</h2>
+
+        <!-- President Section -->
+        <div class="candidate-container" id="president-section">
+            <h3>President</h3>
+            <div class="candidate">
+                <img src="https://assets.onecompiler.app/42wnqhaeu/42wnq355t/%20IAN%20%204.png" alt="Mugisha Ian">
+                <span>Mugisha Ian</span>
+                <input type="radio" name="president" value="Mugisha Ian">
+            </div>
+            <div class="candidate">
+                <img src="https://assets.onecompiler.app/42wnqhaeu/42wntju4r/paul_kagame.png" alt="Paul Kagame">
+                <span>Paul Kagame</span>
+                <input type="radio" name="president" value="Paul Kagame">
+            </div>
+            <button class="done-btn" onclick="submitVote('president')">Done</button>
+        </div>
+
+        <!-- Vice President Section -->
+        <div class="candidate-container" id="vice-president-section">
+            <h3>Vice President</h3>
+            <div class="candidate">
+                <img src="https://assets.onecompiler.app/42wnqhaeu/42wnqu34m/vice1.png" alt="Alice Niyonsaba">
+                <span>Alice Niyonsaba</span>
+                <input type="radio" name="vice-president" value="Alice Niyonsaba">
+            </div>
+            <div class="candidate">
+                <img src="https://assets.onecompiler.app/42wnqhaeu/42wnqu34m/vice2.png" alt="David Habimana">
+                <span>David Habimana</span>
+                <input type="radio" name="vice-president" value="David Habimana">
+            </div>
+            <button class="done-btn" onclick="submitVote('vice-president')">Done</button>
+        </div>
+
+        <!-- Secretary Section -->
+        <div class="candidate-container" id="secretary-section">
+            <h3>Secretary</h3>
+            <div class="candidate">
+                <img src="https://assets.onecompiler.app/42wnqhaeu/42wnqu34m/secretary1.png" alt="Grace Uwamahoro">
+                <span>Grace Uwamahoro</span>
+                <input type="radio" name="secretary" value="Grace Uwamahoro">
+            </div>
+            <div class="candidate">
+                <img src="https://assets.onecompiler.app/42wnqhaeu/42wnqu34m/secretary2.png" alt="Jean Bosco">
+                <span>Jean Bosco</span>
+                <input type="radio" name="secretary" value="Jean Bosco">
+            </div>
+            <button class="done-btn" onclick="submitVote('secretary')">Done</button>
+        </div>
+
+        <!-- Treasurer Section -->
+        <div class="candidate-container" id="treasurer-section">
+            <h3>Treasurer</h3>
+            <div class="candidate">
+                <img src="https://assets.onecompiler.app/42wnqhaeu/42wnqu34m/treasurer1.png" alt="Oliver Manzi">
+                <span>Oliver Manzi</span>
+                <input type="radio" name="treasurer" value="Oliver Manzi">
+            </div>
+            <div class="candidate">
+                <img src="https://assets.onecompiler.app/42wnqhaeu/42wnqu34m/treasurer2.png" alt="Claudine Mukamana">
+                <span>Claudine Mukamana</span>
+                <input type="radio" name="treasurer" value="Claudine Mukamana">
+            </div>
+            <button class="done-btn" onclick="submitVote('treasurer')">Done</button>
+        </div>
+
+        <!-- Class Representative Section -->
+        <div class="candidate-container" id="class-rep-section">
+            <h3>Class Representative</h3>
+            <div class="candidate">
+                <img src="https://assets.onecompiler.app/42wnqhaeu/42wnqu34m/rep1.png" alt="Patrick Nziza">
+                <span>Patrick Nziza</span>
+                <input type="radio" name="class-rep" value="Patrick Nziza">
+            </div>
+            <div class="candidate">
+                <img src="https://assets.onecompiler.app/42wnqhaeu/42wnqu34m/rep2.png" alt="Stella Uwase">
+                <span>Stella Uwase</span>
+                <input type="radio" name="class-rep" value="Stella Uwase">
+            </div>
+            <button class="done-btn" onclick="submitVote('class-rep')">Done</button>
+        </div>
+    </div>
+    <div class="results" id="results-section" style="display:none;">
+        <h2>Voting Results</h2>
+        <div id="president-results"></div>
+        <div id="vice-president-results"></div>
+        <div id="secretary-results"></div>
+        <div id="treasurer-results"></div>
+        <div id="class-rep-results"></div>
+    </div>
+    <script>
+        let votes = {
+            president: null,
+            "vice-president": null,
+            secretary: null,
+            treasurer: null,
+            "class-rep": null,
+        };
+
+        function showCandidates() {
+            const name = document.getElementById('name').value.trim();
+            const studentClass = document.getElementById('class').value.trim();
+
+            if (!name || !studentClass) {
+                alert('Please enter your name and class!');
+                return;
+            }
+
+            document.querySelector('.form-container').style.display = 'none';
+            document.getElementById('candidates-section').style.display = 'block';
+        }
+
+        function submitVote(position) {
+            const selected = document.querySelector(`input[name="${position}"]:checked`);
+
+            if (!selected) {
+                alert(`Please select a candidate for ${position}!`);
+                return;
+            }
+
+            votes[position] = selected.value;
+            document.getElementById(`${position}-section`).innerHTML = `
+                <h3>${position.charAt(0).toUpperCase() + position.slice(1)}</h3>
+                <div>
+                    <span class="dot"></span> ${votes[position]}
+                </div>
+            `;
+
+            updateResults(position);
+        }
+
+        function updateResults(position) {
+            const resultsDiv = document.getElementById(`${position}-results`);
+            resultsDiv.innerHTML = `${position.charAt(0).toUpperCase() + position.slice(1)}: ${votes[position]}`;
+            document.getElementById('results-section').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
